@@ -80,6 +80,15 @@ const styles = StyleSheet.create({
   logo:{
     width:'100%'
   },
+  cajaPadre:{
+    backgroundColor: 'red',
+    flex: 1,
+    alignItems:'center'
+  },
+  imageContainer:{
+    width:200,
+    height:200
+  }
 });  
 
   export default styles
