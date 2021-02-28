@@ -32,7 +32,7 @@ const SignUp = () =>{
     return(
         <>
         <View style={styles.container}>
-            <SelectPicker default='Choose a country' label='country' placeholder='country' onValueChange={(country) => setNewUser({...newUser, country})}>
+            <SelectPicker default='Choose a country' label='country' placeholder='Choose a Country' onValueChange={(country) => setNewUser({...newUser, country})}>
                 {countries.map((country, index) => {
                     return (
                         <SelectPicker.Item label={country.name} value={country.name} key={country.name}>{country.name}</SelectPicker.Item>
