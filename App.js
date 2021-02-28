@@ -1,24 +1,19 @@
 import 'react-native-gesture-handler'
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, Button, TextBase, Pressable, TouchableHighlight } from 'react-native';
-import { color } from 'react-native-reanimated';
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack';
-import Home from './screens/Home'
-import Cities from './screens/Cities'
+import React from 'react'
+import Navigator from './Navigator'
+import {applyMiddleware, createStore} from 'redux'
+import {Provider} from 'react-redux'
+import thunk from 'redux-thunk'
+import authReducer from './redux/reducers/authReducer'
 
-const Stack = createStackNavigator();
+const store = createStore(authReducer, applyMiddleware(thunk))
 
-export default function App() {
+const  App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Cities" component={Cities} />
-      </Stack.Navigator>        
-    </NavigationContainer>
+    <Provider store={store}>
+      <Navigator/>
+    </Provider>
   )
 }
-
+export default App
 
