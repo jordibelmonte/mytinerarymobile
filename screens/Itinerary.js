@@ -96,16 +96,15 @@ const styles ={
     },
     actividadContenedor:{
         display:'flex',
-        flex:1,
         alignItems:'center',
-        width: '90%',
-        backgroundColor:'red',
+        width: 300,
+        backgroundColor:'#0072FF',
         margin: 20,
     },
     imgActividad:{
-        flex:1,
+        width: '100%',
         height: 200,
-        backgroundColor: 'red'
+        resize: 'cover',
     },
     actividadTitulo:{
         color:'white',
@@ -113,7 +112,8 @@ const styles ={
         fontSize: 16,
     },
     contenedorVisible:{
-        flex:1
+        flex:1,
+        alignItems:'center'
     },
     autor:{
         color:'white',
