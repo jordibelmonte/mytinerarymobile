@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react'
 
 const Itineraries = (props) => {
     const cityId = props.route.params.idCity
-    const [itineraries, setItineraries] = useState()
+    const [itineraries, setItineraries] = useState([])
     const [visible, setVisible] = useState(!visible)
     useEffect(()=>{
         fetch('https://mytinenarymobile.herokuapp.com/api/itineraries/'+cityId)
@@ -23,11 +23,11 @@ const Itineraries = (props) => {
                 <Text style={styles.autor}>{itinerary.userName}</Text>
                 <View style={styles.contenedorDatos}>
                     <View ><Text style={styles.texto}>4 Likes</Text></  View>
-                    <View ><Text style={styles.texto}>Duration: 2h</    Text></View >
-                    <View ><Text style={styles.texto}>$$$</Text></  View>
+                    <View ><Text style={styles.texto}>Duration: {itinerary.duration}hs</    Text></View >
+                    <View ><Text style={styles.texto}>{Array(itinerary.price).fill('$')}</Text></  View>
                 </View>
                 <View style={styles.hashtagContenedor}>
-                    <Text style={styles.hashtag}>#Beach</Text>
+                    {itinerary.hashtags.map(hashtag => (<Text style={styles.hashtag}>{hashtag}</Text>))}
                 </View>
                 <TouchableHighlight onPress={() => {setVisible(!visible)}}>
                     {!visible ?
@@ -139,6 +139,10 @@ const styles ={
     },
     contenedorVisible:{
         flex:1
+    },
+    autor:{
+        color:'white',
+        paddingVertical: 5,
     }
 
 }
