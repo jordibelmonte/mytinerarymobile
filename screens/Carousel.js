@@ -11,29 +11,24 @@ import {
 
 const ENTRIES1 = [
   {
-    title: 'Beautiful and dramatic Antelope Canyon',
-    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-    illustration: 'https://i.imgur.com/UYiroysl.jpg',
+    title: 'Paris',
+    illustration: 'https://images.adsttc.com/media/images/5d44/14fa/284d/d1fd/3a00/003d/large_jpg/eiffel-tower-in-paris-151-medium.jpg?1564742900',
   },
   {
-    title: 'Earlier this morning, NYC',
-    subtitle: 'Lorem ipsum dolor sit amet',
-    illustration: 'https://i.imgur.com/UPrs1EWl.jpg',
+    title: 'Amsterdam',
+    illustration: 'https://www.telegraph.co.uk/content/dam/insurance/2016/04/06/amsterdam.jpg',
   },
   {
-    title: 'White Pocket Sunset',
-    subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
-    illustration: 'https://i.imgur.com/MABUbpDl.jpg',
+    title: 'Buenos Aires',
+    illustration: 'https://www.buenosaires.gob.ar/sites/gcaba/files/al_avenida_9_dejulio.jpg',
   },
   {
-    title: 'Acrocorinth, Greece',
-    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-    illustration: 'https://i.imgur.com/KZsmUi2l.jpg',
+    title: 'La Habana',
+    illustration: 'https://viajeropeligro.com/wp-content/uploads/2017/02/cuba1.jpg',
   },
   {
-    title: 'The lone tree, majestic landscape of New Zealand',
-    subtitle: 'Lorem ipsum dolor sit amet',
-    illustration: 'https://i.imgur.com/2nCt3Sbl.jpg',
+    title: 'Malaga',
+    illustration: 'https://pix10.agoda.net/geo/city/12521/1_12521_02.jpg?s=1920x822',
   },
 ];
 const {width: screenWidth} = Dimensions.get('window');

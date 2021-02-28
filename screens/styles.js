@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     },
     backGroundMain:{
       width:'100%',
-      height:'100%',
+      flex:1,
       backgroundColor: "#000",
     },
     smallContainer:{
@@ -88,7 +88,13 @@ const styles = StyleSheet.create({
   imageContainer:{
     width:200,
     height:200
-  }
+  },
+  access:{
+    display:'flex',
+    flexDirection:'row',
+    height:90
+  },
+
 });  
 
   export default styles

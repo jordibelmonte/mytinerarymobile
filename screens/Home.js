@@ -25,9 +25,26 @@ const Home = ({navigation}) => {
                 underlayColor="#FFFFFF"
                 onPress={ () => navigation.navigate('Cities')
                 }>
-                <Text style={styles.button}>Find Cities</Text>
+                  <Text style={styles.button}>Find Cities</Text>
+              </TouchableHighlight>
+              <View style={styles.access}>
+              <TouchableHighlight style={styles.buttonContainerAccess}
+                activeOpacity={0.6}
+                underlayColor="#FFFFFF"
+                onPress={ () => navigation.navigate('SignUp')
+                }>
+                <Text style={styles.button}>Sign Up</Text>
+            </TouchableHighlight>
+              <TouchableHighlight style={styles.buttonContainerAccess}
+                activeOpacity={0.6}
+                underlayColor="#FFFFFF"
+                onPress={ () => navigation.navigate('SignIn')
+                }>
+                <Text style={styles.button}>Sign In</Text>
             </TouchableHighlight>
               </View>
+              </View>
+
             </View>
             </ImageBackground>
           </View>

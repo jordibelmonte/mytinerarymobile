@@ -1,12 +1,14 @@
-import { TextInput } from "react-native-gesture-handler"
+import { StyleSheet, Text, View, Image, ImageBackground, Button, TextBase, Pressable, TouchableHighlight, SafeAreaView, ScrollView, TextInput, FlatList} from 'react-native'
 import {useState, useEffect} from 'react'
+import SelectPicker from 'react-native-form-select-picker'
+import React from 'react'
 const SignUp = () =>{
-    const [country, setCountry] = useState([])
+    const [countries, setCountries] = useState([])
      const [errors, setErrors] = useState([])
      const fetchearCountries = async () => {
          const APIcall = await fetch('https://restcountries.eu/rest/v2/all');
          const responseCountries = await APIcall.json();
-         setCountry(responseCountries)
+         setCountries(responseCountries)
      }
      // Configure the useEffect
      useEffect(() => {
@@ -25,56 +27,29 @@ const SignUp = () =>{
              /* creo un objeto que va a tener el nombre y el valor */
              [name]: value
          })
-     }
-     console.log(errors)
-     const validate = async e =>{
-         e.preventDefault()
-         if (newUser.userName === '' || newUser.email === '' || newUser.password === '' || newUser.repeatPassword === '' || newUser.name === '' || newUser.lastName === '' || newUser.urlPic === '' || newUser.country === ''){
-             alert('Must complete every field')
-             return false
-         }
-         if(newUser.password !== newUser.repeatPassword){
-             alert('passwords don`t match')
-             return false
-         }
-         const response = await props.newUser(newUser)
-         if (response && !response.success){
-             setErrors(response.errors)
-         } else {
-            swal({title:"Success",text:"New User Created", icon:"success",button:"Ok" })
-         }
+     }    
 
-     }
-     const responseGoogle = async (response) => {
-        console.log(response)
-        if (response.error) {
-            swal({title:"Oops!",text:"Something went wrong", icon:"error",button:"Ok" })
-        } else {
-            const respuesta = await props.newUser({
-                userName: response.profileObj.email,
-                email: response.profileObj.email,
-                password: response.profileObj.googleId,
-                repeatPassword: response.profileObj.googleId,
-                name: response.profileObj.givenName,
-                lastName: response.profileObj.familyName,
-                urlPic: response.profileObj.imageUrl,
-                country: "Undefined"
-            })
-            if (respuesta && !respuesta.success) {
-                setErrors(respuesta)
-            } else {
-                alert("New User Saved")
-            }
-        }
-      }
-    
     return(
-        <Viev>
-            <TextInput/>
-
-        </Viev>
-    
+        <>
+        <View style={styles.container}>
+            <SelectPicker default='Choose a country' label='country' placeholder='country' onValueChange={(country) => setNewUser({...newUser, country})}>
+                {countries.map((country, index) => {
+                    return (
+                        <SelectPicker.Item label={country.name} value={country.name} key={country.name}>{country.name}</SelectPicker.Item>
+                    )
+                    })}
+            </SelectPicker>
+        </View>
+            
+        </>
     
         )
 } 
+const styles = {
+    container:{
+        flex:1,
+        alignItems: 'center',
+        justifyContent:'center'
+    }
+}
 export default SignUp
