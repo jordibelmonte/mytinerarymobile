@@ -7,7 +7,8 @@ const authAction = {
         return async (dispatch, getState) =>{
            try{
                const response = await axios.post("https://mytinenarymobile.herokuapp.com/api/user/signup",newUser)
-           if (!response.data.success){
+              console.log(response)
+               if (!response.data.success){
                return response.data
            }
            dispatch({type: 'NEW_USER', payload: response.data})
