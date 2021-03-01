@@ -28,7 +28,6 @@ const SignIn = (props) =>{
             setErrors(response.errors)
             Alert.alert("User Name or Password are incorrect")
         } else {
-            /* Alert.alert("Welcome! "+props.loggedUser.name) */
             Alert.alert(
                 "Welcome!",
                 (props.loggedUser.name),

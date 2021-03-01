@@ -14,6 +14,23 @@ import SignIn from './screens/SignIn'
 const Stack = createStackNavigator();
 
 const Navigator =(props) => {
+
+  var routes = null
+
+  if(!props.loggedUser){
+    var routes=
+    <>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen name="Cities" component={Cities} />
+    </>
+  }else {
+    <>      
+      <Stack.Screen name="Itineraries" component={Itineraries} />
+    </>
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
@@ -22,19 +39,8 @@ const Navigator =(props) => {
           backgroundColor:'#050A1A',
           borderBottomColor:'#0072FF',
           borderStyle:'solid',
-          borderBottomWidth: 3,
-        },logOut:() =>(
-          props.loggedUser && 
-          <View>
-            <Text>{loggedUser.name}, Log Out</Text>
-          </View>
-        )
-      }}>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Cities" component={Cities} />
-        <Stack.Screen name="Itineraries" component={Itineraries} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="SignIn" component={SignIn} />
+          borderBottomWidth: 3,}}}>     
+      {routes}
       </Stack.Navigator>        
     </NavigationContainer>
   )

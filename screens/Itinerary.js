@@ -13,9 +13,9 @@ const Itinerary = ({props}) =>{
                 <Text style={styles.tituloItinerario}>{props.title}</Text>
                 <Text style={styles.autor}>{props.userName}</Text>
                 <View style={styles.contenedorDatos}>
-                    <View ><Text style={styles.texto}>4 Likes</Text></  View>
+                    <View ><Text style={styles.texto}>4 ❤</Text></  View>
                     <View ><Text style={styles.texto}>Duration: {props.duration}hs</    Text></View >
-                    <View ><Text style={styles.texto}>{Array(props.price).fill('$')}</Text></  View>
+                    <View ><Text style={styles.texto}>{Array(props.price).fill('💵')}</Text></  View>
                 </View>
                 <View style={styles.hashtagContenedor}>
                     {props.hashtags.map(hashtag => (<Text style={styles.hashtag}>{hashtag}</Text>))}

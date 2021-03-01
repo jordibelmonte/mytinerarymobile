@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
       fontSize:30,
       color:'white',
       justifyContent: 'center',
+      fontWeight:'bold'
     },
     header:{
       flexDirection:'row',

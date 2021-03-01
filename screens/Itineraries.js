@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, ImageBackground, Button, TextBase, Press
 import {useEffect, useState} from 'react'
 import Itinerary from './Itinerary'
 
+
 const Itineraries = (props) => {
     const cityId = props.route.params.idCity
     const [itineraries, setItineraries] = useState([])
@@ -12,34 +13,42 @@ const Itineraries = (props) => {
         .then(response => response.json())
         .then(data => setItineraries(data.response))
     },[])
-    console.log(itineraries)
-
+     if (itineraries.length === 0){
+        var views = (
+            <View style={styles.imageBackground}>
+                <Text style={styles.textBackground}>No Itineraries Yet</Text>
+            </View> 
+        )
+    } else {
+        var views = (    
+        <ScrollView>
+            {itineraries.map(itinerary => (                                    
+                <Itinerary key={itinerary.title} props={itinerary}/>
+             ))}
+            </ScrollView> 
+        )
+    }
+    
     return(
     <>
-    <ScrollView>
-        { itineraries.map(itinerary => (
-          <Itinerary key={itinerary.title} props={itinerary}/>
-        
-    ))}
-    
-    </ScrollView>
-
-  {/*       {itineraries.length === 0 ? <Text>Oooops! Sorry, no itineraries yes</Text> : 
-        itineraries.map(itinerary =>{
-            <View>
-                <Text>{itinerary.title}</Text>
-                <Text>{itinerary.userName}</Text>
-                <Text>{itinerary.likes.map(like => {
-                    {like.length === 0 ? <Text>Be the first like</Text>: <Text>`{like.lenght} likes`</Text>}
-                })}</Text>
-            </View>
-
-        })
-         } */}
-        
+    {views}
 
     </>)
 }
-
+const styles= StyleSheet.create({
+    imageBackground:{
+        flex:1,
+        height:'100%',
+        width:'100%',
+        backgroundColor:'#0072FF',
+        alignItems:'center',
+        justifyContent:'center',       
+    },
+    textBackground:{
+        color:'white',
+        fontSize: 30,
+        fontWeight: 'bold',
+    }
+})
 
 export default Itineraries

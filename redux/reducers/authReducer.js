@@ -1,3 +1,4 @@
+import {Alert} from 'react-native'
 const initialState = {
     loggedUser: null
 }
@@ -10,18 +11,14 @@ const authReducer = (state = initialState, action) => {
     switch (action.type){
         case 'NEW_USER':
             if(!action.payload.success){
-                alert('error')
+                Alert.alert('error')
                 return state
             }
-           /*  localStorage.setItem('name', action.payload.response.name)
-            localStorage.setItem('urlPic', action.payload.response.urlPic)
-            localStorage.setItem('token', action.payload.response.token) */
             return {
                 ...state,
                 loggedUser: action.payload.response
             }
         case 'LOG_OUT':
-            localStorage.clear()
             
             return{
                 ...state,
@@ -29,12 +26,10 @@ const authReducer = (state = initialState, action) => {
             }
         case 'LOG_IN':
             if(!action.payload.success){
-                alert('error')
+                Alert.alert('error')
                 return state
             }
-/*             localStorage.setItem('name', action.payload.response.name)
-            localStorage.setItem('urlPic', action.payload.response.urlPic)
-            localStorage.setItem('token', action.payload.response.token) */
+
             return{
                 ...state,
                 loggedUser: action.payload.response
@@ -43,5 +38,5 @@ const authReducer = (state = initialState, action) => {
             return state
     }
 }
-/* los reducers se expotan como modulos */
+
 module.exports = authReducer
