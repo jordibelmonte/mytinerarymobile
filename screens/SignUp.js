@@ -2,9 +2,18 @@ import { StyleSheet, Text, View, Image, ImageBackground, Button, TextBase, Press
 import {useState, useEffect} from 'react'
 import SelectPicker from 'react-native-form-select-picker'
 import React from 'react'
+import styles from './styles'
 const SignUp = () =>{
     const [countries, setCountries] = useState([])
-     const [errors, setErrors] = useState([])
+    const [newUser, setNewUser] = useState({})
+    const [errors, setErrors] = useState([])
+    const inputSignUp = (name, value) => {
+      setNewUser({
+            ...newUser,
+            [name]: value
+        })
+    }
+     
      const fetchearCountries = async () => {
          const APIcall = await fetch('https://restcountries.eu/rest/v2/all');
          const responseCountries = await APIcall.json();
@@ -14,42 +23,40 @@ const SignUp = () =>{
      useEffect(() => {
          fetchearCountries();
      }, [])
-     const [newUser, setNewUser] = useState({})
-     const readInput = e => {
-         /* capturo valor del input */
-         const value = e.target.value
-         /* capturo nombre del campo del que recibo el valor del input */
-         const name = e.target.name
-         /* seteo el nuevo usuario */
-         setNewUser({
-             /* uso el spread operator para no sobre escribir el state */
-             ...newUser,
-             /* creo un objeto que va a tener el nombre y el valor */
-             [name]: value
-         })
-     }    
+     
 
     return(
         <>
-        <View style={styles.container}>
-            <SelectPicker default='Choose a country' label='country' placeholder='country' onValueChange={(country) => setNewUser({...newUser, country})}>
+        <ScrollView>
+        <View style={styles.containerSignUp}>
+        <View style={styles.logoContainer}>
+              <Image style={styles.logo}resizeMode="contain" source={require('../assets/logo.png')}></Image>
+        </View>
+            <View style={styles.containerInput}>
+                <TextInput style={styles.countriesSelect} placeholder='First Name' onChangeText={(value) => inputSignUp('userName', value)}/>
+                <TextInput style={styles.countriesSelect} placeholder='Last Name' onChangeText={(value) => inputSignUp('lastName', value)}/>
+                <TextInput style={styles.countriesSelect} placeholder='Email' onChangeText={(value) => inputSignUp('email', value)}/>
+                <TextInput style={styles.countriesSelect} placeholder='Password' onChangeText={(value) => inputSignUp('password', value)}/>
+                <SelectPicker style={styles.countriesSelect} default='Choose a country' label='country' placeholder='Choose your Country' onValueChange={(country) => setNewUser({...newUser, country})}>
                 {countries.map((country, index) => {
                     return (
                         <SelectPicker.Item label={country.name} value={country.name} key={country.name}>{country.name}</SelectPicker.Item>
                     )
                     })}
             </SelectPicker>
+            <TouchableHighlight style={styles.sendButtonContainer}  
+                activeOpacity={0.6}
+                underlayColor="#FFFFFF"
+                onPress={ () => {}}>
+                <Text style={styles.sendButton}>Send</Text>
+            </TouchableHighlight>
+            </View>
         </View>
+        </ScrollView>
             
         </>
     
         )
 } 
-const styles = {
-    container:{
-        flex:1,
-        alignItems: 'center',
-        justifyContent:'center'
-    }
-}
+
 export default SignUp

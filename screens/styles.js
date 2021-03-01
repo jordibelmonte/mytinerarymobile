@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       paddingVertical: '2%',
       paddingHorizontal: '5%',
+      textAlign:'center'
   },
   logoContainer:{
     display: 'flex',
@@ -94,6 +95,50 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     height:90
   },
+  buttonContainerAccess:{
+    height:60,
+    marginTop:20,
+    marginRight:'2%',
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    borderRadius: 150,
+    justifyContent:'center'
+  },
+  containerSignUp:{
+    flex:1,
+    alignItems: 'center',
+    justifyContent:'space-evenly'
+},
+  countriesSelect:{
+    borderStyle:'solid',
+    borderColor:'black',
+    width:'90%',
+    paddingHorizontal: 30,
+    paddingVertical: 10,
+    borderWidth: 2,
+    borderRadius: 100,
+    marginVertical: 10,
+},
+containerInput:{
+  height:'100%',
+  width:'90%',
+  alignItems:'center'
+},
+sendButton:{
+  color:'black',
+  fontSize:25,
+  color: 'white'
+},
+sendButtonContainer:{
+  height: 60,
+  backgroundColor:'#0072FF',
+  paddingHorizontal:100,
+  paddingVertical:20,
+  alignItems:'center',
+  justifyContent:'center',
+  borderRadius:200,
+  marginTop:20,
+
+}
 
 });  
 
