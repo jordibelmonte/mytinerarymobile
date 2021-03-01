@@ -37,7 +37,14 @@ const SignUp = (props) =>{
             setErrors(response.errors)
             errors.map(error => Alert.alert(error))
         } else {
-            Alert.alert("User Created!")
+            Alert.alert(
+                "Welcome!",
+                (props.loggedUser.name),
+                [
+                  { text: "OK", onPress: () => props.navigation.navigate('Cities') }
+                ],
+                { cancelable: false }
+              )
         }}
     return(
         <>

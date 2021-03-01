@@ -20,14 +20,15 @@ const Navigator =(props) => {
   if(!props.loggedUser){
     var routes=
     <>
-      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Cities" component={Cities} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Itineraries" component={Itineraries} />
     </>
   }else {
     <>      
-      <Stack.Screen name="Itineraries" component={Itineraries} />
+      
     </>
   }
 

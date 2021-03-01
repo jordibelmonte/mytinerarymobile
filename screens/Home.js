@@ -13,14 +13,7 @@ import authAction from '../redux/actions/authAction'
 
 
 const Home = (props) => {
-  const homeNavigation= () => {
-    if(!props.loggedUser){
-      Alert.alert('You must be logged to look for cities')
-      
-    }else {
-      return (props.navigation.navigate('SignUp'))
-    }
-  } 
+
     return(
         <ScrollView style={styles.safeArea} onRefresh={() =>{}}>
           <View style={styles.container}>
@@ -45,7 +38,7 @@ const Home = (props) => {
                 <TouchableHighlight style={styles.buttonContainerAccess}
                 activeOpacity={0.6}
                 underlayColor="#FFFFFF"
-                onPress={ () => homeNavigation()}>
+                onPress={ () => props.navigation.navigate('SignUp')}>
                   <Text style={styles.button}>Sign Up</Text>
                 </TouchableHighlight>
                 <TouchableHighlight style={styles.buttonContainerAccess}
