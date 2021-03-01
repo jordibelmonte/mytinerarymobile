@@ -28,31 +28,31 @@ const Home = ({navigation}) => {
                   <Text style={styles.button}>Find Cities</Text>
               </TouchableHighlight>
               <View style={styles.access}>
-              <TouchableHighlight style={styles.buttonContainerAccess}
+                <TouchableHighlight style={styles.buttonContainerAccess}
                 activeOpacity={0.6}
                 underlayColor="#FFFFFF"
                 onPress={ () => navigation.navigate('SignUp')
                 }>
-                <Text style={styles.button}>Sign Up</Text>
-            </TouchableHighlight>
-              <TouchableHighlight style={styles.buttonContainerAccess}
+                  <Text style={styles.button}>Sign Up</Text>
+                </TouchableHighlight>
+                <TouchableHighlight style={styles.buttonContainerAccess}
                 activeOpacity={0.6}
                 underlayColor="#FFFFFF"
                 onPress={ () => navigation.navigate('SignIn')
                 }>
-                <Text style={styles.button}>Sign In</Text>
-            </TouchableHighlight>
+                  <Text style={styles.button}>Sign In</Text>
+                </TouchableHighlight>
               </View>
-              </View>
+            </View>
 
-            </View>
-            </ImageBackground>
           </View>
+        </ImageBackground>
+        </View>
           <View style={styles.division}>
-              <Text style={styles.divisionText}>Popular MyTineraries</Text>
-            </View>
-          <MyCarousel/>
-        </ScrollView>
+            <Text style={styles.divisionText}>Popular MyTineraries</Text>
+          </View>
+        <MyCarousel/>
+      </ScrollView>
     )
 } 
-export default Home 
+export default Home

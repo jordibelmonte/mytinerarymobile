@@ -7,7 +7,6 @@ const authAction = {
         return async (dispatch, getState) =>{
            try{
                const response = await axios.post("https://mytinenarymobile.herokuapp.com/api/user/signup",newUser)
-              console.log(response)
                if (!response.data.success){
                return response.data
            }
@@ -42,13 +41,18 @@ const authAction = {
           }
         }
       },
-    logIn : (logUser) => {
+    logIn: (logUser) => {
         return async(dispatch, getState) => {
-            const response = await axios.post("https://mytinenarymobile.herokuapp.com/api/user/signin", logUser)
+          try{
+            const response = await axios.post("https://mytinenarymobile.herokuapp.com/api/user/signin",logUser)
+            console.log('llego')
             if (!response.data.success){
-                return response.data
-            }
-            dispatch({type: 'LOG_IN', payload: response.data})
+              return response.data
+          }
+          dispatch({type: 'LOG_IN', payload: response.data})}
+          catch(err){
+            console.log(err)
+          }  
         }
 
     }

@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     height:90
   },
   buttonContainerAccess:{
-    height:60,
+    height:45,
     marginTop:20,
     marginRight:'2%',
     backgroundColor: "rgba(255, 255, 255, 0.7)",
@@ -138,6 +138,13 @@ sendButtonContainer:{
   borderRadius:200,
   marginTop:20,
 
+},
+goback:{
+  marginVertical: 20,
+},
+gobackText:{
+  color:'#0072FF',
+  fontSize:20,
 }
 
 });  
