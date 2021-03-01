@@ -27,7 +27,6 @@ const SignUp = () =>{
 
     return(
         <>
-<<<<<<< HEAD
         <ScrollView>
         <View style={styles.containerSignUp}>
         <View style={styles.logoContainer}>
@@ -39,10 +38,6 @@ const SignUp = () =>{
                 <TextInput style={styles.countriesSelect} placeholder='Email' onChangeText={(value) => inputSignUp('email', value)}/>
                 <TextInput style={styles.countriesSelect} placeholder='Password' onChangeText={(value) => inputSignUp('password', value)}/>
                 <SelectPicker style={styles.countriesSelect} default='Choose a country' label='country' placeholder='Choose your Country' onValueChange={(country) => setNewUser({...newUser, country})}>
-=======
-        <View style={styles.container}>
-            <SelectPicker default='Choose a country' label='country' placeholder='Choose a Country' onValueChange={(country) => setNewUser({...newUser, country})}>
->>>>>>> a56c7724f22175f689000794f7244080e7a09a89
                 {countries.map((country, index) => {
                     return (
                         <SelectPicker.Item label={country.name} value={country.name} key={country.name}>{country.name}</SelectPicker.Item>
