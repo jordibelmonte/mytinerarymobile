@@ -1,17 +1,18 @@
 import axios from 'axios'
+import { View, StyleSheet, Button, Alert } from "react-native";
 
-
-const authActions = {
+const authAction = {
     newUser: (newUser) => {
+      console.log('llegué a la action')
         return async (dispatch, getState) =>{
            try{
-               const response = await axios.post("http://localhost:4000/api/user/signup", newUser)
+               const response = await axios.post("https://mytinenarymobile.herokuapp.com/api/user/signup",newUser)
            if (!response.data.success){
                return response.data
            }
            dispatch({type: 'NEW_USER', payload: response.data})
        }catch(err){
-        alert(err)
+        console.log(err)
        }
     } 
     }, 
@@ -26,7 +27,7 @@ const authActions = {
     logInFromLS: (token) => {
         return async (dispatch, getState) => {
           try{
-            const response = await axios.post('http://localhost:4000/api/login/ls', {token}, {
+            const response = await axios.post('https://mytinenarymobile.herokuapp.com/api/login/ls', {token}, {
               headers: {
                 Authorization: `Bearer ${token}`
               }
@@ -42,7 +43,7 @@ const authActions = {
       },
     logIn : (logUser) => {
         return async(dispatch, getState) => {
-            const response = await axios.post("http://localhost:4000/api/user/signin", logUser)
+            const response = await axios.post("https://mytinenarymobile.herokuapp.com/api/user/signin", logUser)
             if (!response.data.success){
                 return response.data
             }
@@ -52,4 +53,4 @@ const authActions = {
     }
 }
 
-export default authActions
+export default authAction

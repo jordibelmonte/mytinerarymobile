@@ -1,9 +1,12 @@
-import { StyleSheet, Text, View, Image, ImageBackground, Button, TextBase, Pressable, TouchableHighlight, SafeAreaView, ScrollView, TextInput, FlatList} from 'react-native'
+import { StyleSheet, Text, View, Image, ImageBackground, Button, TextBase, Pressable, TouchableHighlight, SafeAreaView, ScrollView, TextInput, FlatList, ToastAndroid} from 'react-native'
 import {useState, useEffect} from 'react'
 import SelectPicker from 'react-native-form-select-picker'
 import React from 'react'
 import styles from './styles'
-const SignUp = () =>{
+import {connect} from 'react-redux'
+import authAction from '../redux/actions/authAction'
+
+const SignUp = (props) =>{
     const [countries, setCountries] = useState([])
     const [newUser, setNewUser] = useState({})
     const [errors, setErrors] = useState([])
@@ -24,7 +27,17 @@ const SignUp = () =>{
          fetchearCountries();
      }, [])
      
-
+     const validate = async () =>{
+        if (newUser.userName === '' || newUser.email === '' || newUser.password === '' || newUser.name === '' || newUser.lastName === '' || newUser.country === ''){
+            return false
+        }
+        const response = await props.newUser(newUser)
+        if (response && !response.success){
+            setErrors(response.errors)
+            ToastAndroid.show("error", ToastAndroid.LONG)
+        } else {
+            ToastAndroid.show("User Created!", ToastAndroid.LONG)
+        }}
     return(
         <>
         <ScrollView>
@@ -47,7 +60,7 @@ const SignUp = () =>{
             <TouchableHighlight style={styles.sendButtonContainer}  
                 activeOpacity={0.6}
                 underlayColor="#FFFFFF"
-                onPress={ () => {}}>
+                onPress={validate}>
                 <Text style={styles.sendButton}>Send</Text>
             </TouchableHighlight>
             </View>
@@ -58,5 +71,13 @@ const SignUp = () =>{
     
         )
 } 
+const mapStateToProps = state =>{
+    return{
+        loggedUser: state.loggedUser
+    }
+}
+const mapDispatchToProps = {
+    newUser: authAction.newUser
+}
 
-export default SignUp
+export default connect(mapStateToProps,mapDispatchToProps)(SignUp)
